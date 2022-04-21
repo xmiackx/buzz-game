@@ -1,5 +1,4 @@
 input.onPinPressed(TouchPin.P0, function () {
-    pins.digitalWritePin(DigitalPin.P2, 1)
     score += 1
     basic.showIcon(IconNames.No)
     basic.pause(1000)
@@ -41,3 +40,18 @@ basic.showLeds(`
     # . # # #
     # . . . .
     `)
+basic.forever(function () {
+    if (input.pinIsPressed(TouchPin.P0)) {
+        pins.digitalWritePin(DigitalPin.P2, 1)
+        basic.pause(100)
+    } else {
+        pins.digitalWritePin(DigitalPin.P2, 0)
+    }
+    basic.showLeds(`
+        # # # . #
+        # . # . #
+        # . # . #
+        # . # # #
+        # . . . .
+        `)
+})
